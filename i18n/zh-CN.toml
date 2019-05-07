@@ -1,0 +1,11 @@
+[archives]
+    other = "归档"
+
+[tags]
+    other = "标签"
+
+[categories]
+    other = "分类"
+
+[about]
+    other = "关于"

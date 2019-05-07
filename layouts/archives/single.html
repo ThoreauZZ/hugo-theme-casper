@@ -1,0 +1,49 @@
+{{ partial "header.html" . }}
+
+{{if .Params.image}}
+{{if or (eq (substr .Params.image 0 7) "http://") (eq (substr .Params.image 0 8) "https://")}}
+<header class="main-header post-head" style="background-image: url({{.Params.image}})">
+    {{ else }}
+    <header class="main-header post-head" style="background-image: url({{.Params.image | relURL}})">
+        {{ end }}
+        <nav class="main-nav overlay clearfix">
+            {{else}}
+            <header class="main-header post-head no-cover">
+                <nav class="main-nav overlay clearfix">
+                    {{end}}
+
+                    {{ if .Site.Params.logo }}
+                    <a class="blog-logo" href="{{.Site.BaseURL}}"><img src="{{ .Site.Params.logo | relURL }}" alt="Home"/></a>
+                    {{end}}
+                    {{ if .Site.Menus.main }}
+                    <a class="menu-button" href="#"><span class="burger">&#9776;</span><span
+                            class="word">Menu</span></a>
+                    {{else}}
+                    {{ if .Site.Params.RSSLink}}
+                    <a class="menu-button icon-feed" href="{{.Site.Params.RSSLink }}">&nbsp;&nbsp;Subscribe</a>
+                    {{else}}
+                    <a class="menu-button icon-feed" href="{{ .RSSLink }}">&nbsp;&nbsp;Subscribe</a>
+                    {{end}}
+                    {{end}}
+                </nav>
+            </header>
+        </nav>
+    </header>
+</header>
+<main class="content">
+    <div class="post-archive">
+        {{ range (where (where .Site.Pages "Type" "in" (slice "post" "posts")) "Kind" "page").GroupByDate "2006" }}
+        <h3>{{ .Key }}</h3>
+        <div class="archive-item">
+            {{ range .Pages }}
+            <div>
+                <span class="date">{{ .Date.Format "01/02" }}</span>
+                <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+
+    </div>
+</main>
+{{ partial "footer.html" . }}

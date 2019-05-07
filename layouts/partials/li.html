@@ -25,13 +25,15 @@
             {{end}}     
         {{end}}
 
-        {{if .Params.tags }}on
+        {{if .Params.tags }}
+            <!-- space -->
+             &nbsp;
             {{ range $index, $tag := .Params.tags }}
-                <a href="{{$.Site.BaseURL}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>,
+                <span class="post-tag small"> <a href="{{$.Site.BaseURL}}/tags/{{ $tag | urlize }}/">{{ $tag }}</a></span>
             {{ end }}
         {{end}}
         <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
-            {{ .Date.Format "2 Jan 2006" }}
+            {{ .Date.Format "2006-01-02" }}
         </time>
     </footer>
 </article>

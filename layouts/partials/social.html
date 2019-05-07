@@ -28,7 +28,7 @@
 
 {{ if .Site.Params.stackoverflowId }}
     <a class="bloglogo" href="https://stackoverflow.com/users/{{ .Site.Params.stackoverflowId }}" target="_blank">
-        <img src="images/stackoverflow.svg" height="40" width="40">
+        <img src="/images/stackoverflow.svg" height="40" width="40">
     </a>
 &nbsp;
 {{end}}
@@ -77,7 +77,21 @@
 
 {{ if .Site.Params.keybaseName }}
     <a class="bloglogo" href="https://keybase.io/{{ .Site.Params.keybaseName }}" target="_blank">
-        <img src="images/keybase.svg" height="40" width="40">
+        <img src="/images/keybase.svg" height="40" width="40">
     </a>
 &nbsp;
+{{end}}
+
+{{ if .Site.Params.weiboName }}
+<a class="bloglogo" href="https://weibo.com/{{ .Site.Params.weiboName }}" target="_blank">
+    <img src="/images/weibo.svg" height="40" width="40">
+</a>
+{{end}}
+
+
+{{ if .Site.Params.weixin }}
+<a class="bloglogo" href="/about/" target="_blank">
+    &nbsp;
+    <img src="/images/weixin.svg" height="40" width="40">
+</a>
 {{end}}

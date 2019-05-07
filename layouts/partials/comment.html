@@ -1,0 +1,7 @@
+{{ if ne .Params.comments false }}
+    {{ if .Site.DisqusShortname }}
+        {{ partial "disqus.html" .}}
+    {{ else if .Site.Params.gitalk.enable }} 
+        {{ partial "gitalk.html" .}} 
+    {{ end }}
+{{ end }}
